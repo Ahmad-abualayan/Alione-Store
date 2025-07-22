@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alione Store | اليون ستور</title>
+  <meta name="description" content="Alione Store - تسوق مستلزمات طبية، سيارات، زراعية ومنزلية بأسعار منافسة مع توصيل مباشر.">
+  <style>
+    body {
+      font-family: 'Tahoma', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #000;
+    }
+    header {
+      background-color: #d2b12ccd;
+      text-align: center;
+      padding: 10px;
+    }
+    header img {
+      height: 80px;
+    }
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 24px;
+    }
+    nav {
+      background-color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    nav a, nav button {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #070707;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+    .product {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      width: 220px;
+      text-align: center;
+      padding: 10px;
+    }
+    .product img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .product-title {
+      margin: 10px 0;
+    }
+    .price {
+      color: #666;
+    }
+    .add-to-cart {
+      background-color: #800080;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #cart-section {
+      padding: 20px;
+      background-color: #fff;
+    }
+    #cart {
+      margin-bottom: 10px;
+    }
+    #total-price {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .send-order {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .social-links {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+    }
+    .social-links a {
+      display: inline-block;
+      margin: 5px;
+      background-color: #25D366;
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    .social-links a.fb {
+      background-color: #3b5998;
+    }
+    body.dark {
+      background-color: #1e1e1e;
+      color: white;
+    }
+    body.dark header,
+    body.dark nav,
+    body.dark .product,
+    body.dark #cart-section {
+      background-color: #2a2a2a;
+      color: white;
+    }
+    @media (max-width: 600px) {
+      .products {
+        flex-direction: column;
+        align-items: center;
+      }
+      .send-order {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="image1.png" alt="شعار Alione Store" />
+  <h1>Alione Store | اليون ستور</h1>
+</header>
+<nav>
+  <a href="medical.html">مستلزمات طبية</a>
+  <a href="cars.html">مستلزمات السيارات</a>
+  <a href="agriculture.html">للزراعة</a>
+  <a href="home.html">للمنزل</a>
+  <a href="other.html">أخرى</a>
+  <button onclick="toggleDarkMode()">🌙</button>
+</nav>
+<h1> منتجات مميزة </h1>
+<section class="products" id="product-list">
+  <div class="product">
+    <img src="labobo.jpg" alt="labobo">
+    <div class="product-title">دمية اللابوبو</div>
+    <div class="price">80₪</div>
+    <button class="add-to-cart" data-name=" labobo"data-price="80">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/220x220?text=منتج+2" alt="منتج 2">
+    <div class="product-title">زيت محرك 5W-30</div>
+    <div class="price">35 ₪</div>
+    <button class="add-to-cart" data-name="زيت محرك 5W-30" data-price="35">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/220x220?text=منتج+3" alt="منتج 3">
+    <div class="product-title">منتج وهمي 3</div>
+    <div class="price">50 ₪</div>
+    <button class="add-to-cart" data-name="منتج وهمي 3" data-price="50">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/220x220?text=منتج+4" alt="منتج 4">
+    <div class="product-title">منتج وهمي 4</div>
+    <div class="price">25 ₪</div>
+    <button class="add-to-cart" data-name="منتج وهمي 4" data-price="25">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/220x220?text=منتج+5" alt="منتج 5">
+    <div class="product-title">منتج وهمي 5</div>
+    <div class="price">18 ₪</div>
+    <button class="add-to-cart" data-name="منتج وهمي 5" data-price="18">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/220x220?text=منتج+6" alt="منتج 6">
+    <div class="product-title">منتج وهمي 6</div>
+    <div class="price">90 ₪</div>
+    <button class="add-to-cart" data-name="منتج وهمي 6" data-price="90">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/220x220?text=منتج+7" alt="منتج 7">
+    <div class="product-title">منتج وهمي 7</div>
+    <div class="price">65 ₪</div>
+    <button class="add-to-cart" data-name="منتج وهمي 7" data-price="65">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="https://via.placeholder.com/220x220?text=منتج+8" alt="منتج 8">
+    <div class="product-title">منتج وهمي 8</div>
+    <div class="price">40 ₪</div>
+    <button class="add-to-cart" data-name="منتج وهمي 8" data-price="40">أضف للسلة</button>
+  </div>
+</section>
+
+<section id="cart-section">
+  <h2>السلة</h2>
+  <ul id="cart"></ul>
+  <div id="total-price"></div>
+  <input type="text" id="customer-name" placeholder="اسمك الكامل" required />
+  <input type="text" id="customer-address" placeholder="عنوانك" required />
+  <button class="send-order" onclick="sendOrder()">إرسال الطلب عبر واتساب</button>
+</section>
+
+<div class="social-links">
+  <a href="https://wa.me/972569480816" target="_blank" title="واتساب">💬</a>
+  <a href="https://www.facebook.com/share/14EiA6mWK5o/" class="fb" target="_blank" title="فيسبوك">f</a>
+</div>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function updateCart() {
+    const cartList = document.getElementById('cart');
+    const totalPrice = document.getElementById('total-price');
+    if (!cartList || !totalPrice) return;
+
+    cartList.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const li = document.createElement('li');
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = '❌';
+      removeBtn.style.marginLeft = '8px';
+      removeBtn.onclick = () => {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
+      };
+      li.textContent = `${item.name} - ${item.price} ₪`;
+      li.appendChild(removeBtn);
+      cartList.appendChild(li);
+      total += parseFloat(item.price);
+    });
+
+    totalPrice.textContent = `المجموع: ${total} ₪`;
+  }
+
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+      const name = button.getAttribute('data-name');
+      const price = button.getAttribute('data-price');
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCart();
+      alert("✅ تمت إضافة المنتج إلى السلة");
+    });
+  });
+
+  function sendOrder() {
+    const name = document.getElementById('customer-name')?.value.trim();
+    const address = document.getElementById('customer-address')?.value.trim();
+
+    if (!name || !address || cart.length === 0) {
+      alert('يرجى تعبئة الاسم والعنوان وإضافة منتجات للسلة');
+      return;
+    }
+
+    let message = `طلب جديد من Alione Store%0A`;
+    message += `👤 الاسم: ${name}%0A🏠 العنوان: ${address}%0A🛒 المنتجات:%0A`;
+
+    cart.forEach(item => {
+      message += `- ${item.name} (${item.price} ₪)%0A`;
+    });
+
+    message += `%0A💵 الدفع: عند الاستلام`;
+    message += `%0A📦 تم تجهيز هذا الطلب بواسطة فريق Alione بإشراف أحمد أبو عليان.`;
+
+    cart = [];
+    localStorage.removeItem('cart');
+    updateCart();
+
+    window.open(`https://wa.me/972569480816?text=${message}`, '_blank');
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark');
+  }
+
+  updateCart();
+</script>
+
+</body>
+</html>

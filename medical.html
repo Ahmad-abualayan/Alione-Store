@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مستلزمات طبية | Alione Store</title>
+  <style>
+    body {
+      font-family: 'Tahoma', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #000;
+    }
+    header {
+      background-color: #d2b12ccd;
+      color: #000;
+      text-align: center;
+      padding: 10px;
+    }
+    header h1 {
+      margin: 10px 0;
+      font-size: 24px;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+    .product {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      width: 220px;
+      text-align: center;
+      padding: 10px;
+    }
+    .product img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .product-title {
+      margin: 10px 0;
+    }
+    .price {
+      color: #666;
+    }
+    .add-to-cart {
+      background-color: #800080;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .back {
+      display: block;
+      text-align: center;
+      margin: 20px auto;
+      color: #800080;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #cart-section {
+      padding: 20px;
+      background-color: #fff;
+    }
+    #cart {
+      margin-bottom: 10px;
+    }
+    #total-price {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .send-order {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🩺 مستلزمات طبية - Alione Store</h1>
+</header>
+
+<section class="products">
+  <div class="product">
+    <img src="slimpatch.jpg" alt="slimpatch">
+    <div class="product-title">لاصقات تنحيف slimpatch</div>
+    <div class="price">70 ₪</div>
+    <button class="add-to-cart" data-name="slimpatch" data-price="70">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="slimpatch.jpg" alt="slimpatch">
+    <div class="product-title">لاصقات تنحيفslimpatch علبتين  </div>
+    <div class="price">100بدل 140 ₪</div>
+    <button class="add-to-cart" data-name="slimpatch علبتين" data-price="100">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="hojama.jpg" alt="kinoki patch">
+    <div class="product-title">لاصقات حجاما</div>
+    <div class="price">50 لاصقة ب 100 ₪</div>
+    <button class="add-to-cart" data-name="لاصقات الحجاما " data-price="100">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="kneepatch.jpg" alt="kneepatch">
+    <div class="product-title">لاصقات الركبة و الرقبة </div>
+    <div class="price">50 لاصقة ب 100 ₪</div>
+    <button class="add-to-cart" data-name="لاصقات الركبة و الرقبة " data-price="100">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="mashad rokba.jpg" alt="مشد ركبة">
+    <div class="product-title">مشد ركبة </div>
+    <div class="price">60 ₪</div>
+    <button class="add-to-cart" data-name="مشد ركبة" data-price="60">أضف للسلة</button>
+  </div>
+  <div class="product">
+    <img src="draja.jpg" alt="دراجة تاهيل الاطراف">
+    <div class="product-title">دراجة تاهيل الاطراف</div>
+    <div class="price">130 ₪</div>
+    <button class="add-to-cart" data-name="دراجة تاهيل الاطراف" data-price="130">أضف للسلة</button>
+  </div>
+</section>
+
+<section id="cart-section">
+  <h2>السلة</h2>
+  <ul id="cart"></ul>
+  <div id="total-price"></div>
+  <input type="text" id="customer-name" placeholder="اسمك الكامل" required />
+  <input type="text" id="customer-address" placeholder="عنوانك" required />
+  <button class="send-order" onclick="sendOrder()">إرسال الطلب عبر واتساب</button>
+</section>
+
+<a href="index.html" class="back">🔙 العودة للصفحة الرئيسية</a>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function updateCart() {
+    const cartList = document.getElementById('cart');
+    const totalPrice = document.getElementById('total-price');
+    if (!cartList || !totalPrice) return;
+
+    cartList.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const li = document.createElement('li');
+      const removeBtn = document.createElement('button');
+      removeBtn.textContent = '❌';
+      removeBtn.style.marginLeft = '8px';
+      removeBtn.onclick = () => {
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
+      };
+      li.textContent = `${item.name} - ${item.price} ₪`;
+      li.appendChild(removeBtn);
+      cartList.appendChild(li);
+      total += parseFloat(item.price);
+    });
+
+    totalPrice.textContent = `المجموع: ${total} ₪`;
+  }
+
+  document.querySelectorAll('.add-to-cart')?.forEach(button => {
+    button.addEventListener('click', () => {
+      const name = button.getAttribute('data-name');
+      const price = button.getAttribute('data-price');
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCart();
+      alert("✅ تمت إضافة المنتج إلى السلة");
+    });
+  });
+
+  function sendOrder() {
+    const name = document.getElementById('customer-name')?.value.trim();
+    const address = document.getElementById('customer-address')?.value.trim();
+
+    if (!name || !address || cart.length === 0) {
+      alert('يرجى تعبئة الاسم والعنوان وإضافة منتجات للسلة');
+      return;
+    }
+
+    let message = `طلب جديد من Alione Store%0A`;
+    message += `👤 الاسم: ${name}%0A🏠 العنوان: ${address}%0A🛒 المنتجات:%0A`;
+
+    cart.forEach(item => {
+      message += `- ${item.name} (${item.price} ₪)%0A`;
+    });
+
+    message += `%0A💵 الدفع: عند الاستلام`;
+    message += `%0A📦 تم تجهيز هذا الطلب بواسطة فريق Alione بإشراف أحمد أبو عليان.`;
+
+    cart = [];
+    localStorage.removeItem('cart');
+    updateCart();
+
+    window.open(`https://wa.me/972569480816?text=${message}`, '_blank');
+  }
+
+  updateCart();
+</script>
+
+</body>
+</html>
