@@ -91,6 +91,40 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    /* 🛒 السلة العائمة */
+    .floating-cart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: purple;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      z-index: 1000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      background-color: red;
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body>
@@ -101,40 +135,46 @@
 
 <section class="products">
   <div class="product">
-    <img src="https://via.placeholder.com/220x220?text=بذور+طماطم" alt="بذور طماطم">
-    <div class="product-title">بذور طماطم عضوية</div>
-    <div class="price">10 ₪</div>
-    <button class="add-to-cart" data-name="بذور طماطم عضوية" data-price="10">أضف للسلة</button>
+    <img src="mqs shash.jpg" alt="مقص زراعة و تركيب الاشجار">
+    <div class="product-title">مقص زراعة و تركيب الاشجار</div>
+    <div class="price">ال3 ب 100 ₪</div>
+    <input type="number" id="qty-mqs" min="1" value="1" style="width: 50px;">
+    <button class="add-to-cart" data-name="مقص زراعة و تركيب الاشجار" data-price="100" data-id="mqs">أضف للسلة</button>
   </div>
   <div class="product">
-    <img src="https://via.placeholder.com/220x220?text=مبيد+حشري" alt="مبيد">
-    <div class="product-title">مبيد حشري طبيعي</div>
-    <div class="price">25 ₪</div>
-    <button class="add-to-cart" data-name="مبيد حشري طبيعي" data-price="25">أضف للسلة</button>
+    <img src="mks shaqh.jpeg" alt="مشط الأرض المتطور">
+    <div class="product-title">مشط الأرض المتطور</div>
+    <div class="price">60 و 2 ب 100 ₪</div>
+    <input type="number" id="qty-mks" min="1" value="1" style="width: 50px;">
+    <button class="add-to-cart" data-name="مشط الأرض المتطور" data-price="100" data-id="mks">أضف للسلة</button>
   </div>
   <div class="product">
-    <img src="https://via.placeholder.com/220x220?text=مقص+زراعي" alt="مقص">
+    <img src="https://via.placeholder.com/220x220?text=مقص+زراعي" alt="مقص تقليم يدوي">
     <div class="product-title">مقص تقليم يدوي</div>
     <div class="price">18 ₪</div>
-    <button class="add-to-cart" data-name="مقص تقليم يدوي" data-price="18">أضف للسلة</button>
+    <input type="number" id="qty-mpq" min="1" value="1" style="width: 50px;">
+    <button class="add-to-cart" data-name="مقص تقليم يدوي" data-price="18" data-id="mpq">أضف للسلة</button>
   </div>
   <div class="product">
-    <img src="https://via.placeholder.com/220x220?text=شبكة+ري" alt="شبكة ري">
+    <img src="https://via.placeholder.com/220x220?text=شبكة+ري" alt="شبكة ري بالتنقيط">
     <div class="product-title">شبكة ري بالتنقيط</div>
     <div class="price">40 ₪</div>
-    <button class="add-to-cart" data-name="شبكة ري بالتنقيط" data-price="40">أضف للسلة</button>
+    <input type="number" id="qty-shbka" min="1" value="1" style="width: 50px;">
+    <button class="add-to-cart" data-name="شبكة ري بالتنقيط" data-price="40" data-id="shbka">أضف للسلة</button>
   </div>
   <div class="product">
-    <img src="https://via.placeholder.com/220x220?text=تربة+عضوية" alt="تربة عضوية">
+    <img src="https://via.placeholder.com/220x220?text=تربة+عضوية" alt="تربة زراعية عضوية">
     <div class="product-title">تربة زراعية عضوية</div>
     <div class="price">22 ₪</div>
-    <button class="add-to-cart" data-name="تربة زراعية عضوية" data-price="22">أضف للسلة</button>
+    <input type="number" id="qty-turba" min="1" value="1" style="width: 50px;">
+    <button class="add-to-cart" data-name="تربة زراعية عضوية" data-price="22" data-id="turba">أضف للسلة</button>
   </div>
   <div class="product">
-    <img src="https://via.placeholder.com/220x220?text=رشاش+يدوي" alt="رشاش">
+    <img src="https://via.placeholder.com/220x220?text=رشاش+يدوي" alt="رشاش يدوي 1 لتر">
     <div class="product-title">رشاش يدوي 1 لتر</div>
     <div class="price">15 ₪</div>
-    <button class="add-to-cart" data-name="رشاش يدوي 1 لتر" data-price="15">أضف للسلة</button>
+    <input type="number" id="qty-rshash" min="1" value="1" style="width: 50px;">
+    <button class="add-to-cart" data-name="رشاش يدوي 1 لتر" data-price="15" data-id="rshash">أضف للسلة</button>
   </div>
 </section>
 
@@ -149,13 +189,20 @@
 
 <a href="index.html" class="back">🔙 العودة للصفحة الرئيسية</a>
 
+<!-- 🛒 سلة عائمة -->
+<div class="floating-cart" onclick="scrollToCart()">
+  <span class="cart-count" id="floating-cart-count">0</span>
+  🛒
+</div>
+
 <script>
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   function updateCart() {
     const cartList = document.getElementById('cart');
     const totalPrice = document.getElementById('total-price');
-    if (!cartList || !totalPrice) return;
+    const cartCount = document.getElementById('floating-cart-count');
+    if (!cartList || !totalPrice || !cartCount) return;
 
     cartList.innerHTML = '';
     let total = 0;
@@ -170,20 +217,35 @@
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCart();
       };
-      li.textContent = `${item.name} - ${item.price} ₪`;
+      li.textContent = `${item.name} - ${item.price} ₪ - الكمية: ${item.quantity}`;
       li.appendChild(removeBtn);
       cartList.appendChild(li);
-      total += parseFloat(item.price);
+      total += parseFloat(item.price) * item.quantity;
     });
 
     totalPrice.textContent = `المجموع: ${total} ₪`;
+    cartCount.textContent = cart.length;
   }
 
   document.querySelectorAll('.add-to-cart')?.forEach(button => {
     button.addEventListener('click', () => {
       const name = button.getAttribute('data-name');
       const price = button.getAttribute('data-price');
-      cart.push({ name, price });
+      const id = button.getAttribute('data-id');
+      const qtyInput = document.getElementById(`qty-${id}`);
+      const quantity = parseInt(qtyInput.value) || 1;
+
+      // البحث عن المنتج في السلة
+      const existingItem = cart.find(item => item.name === name);
+
+      if (existingItem) {
+        // زيادة الكمية في السلة
+        existingItem.quantity += quantity;
+      } else {
+        // إضافة المنتج الجديد مع الكمية
+        cart.push({ name, price, quantity });
+      }
+
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCart();
       alert("✅ تمت إضافة المنتج إلى السلة");
@@ -203,7 +265,7 @@
     message += `👤 الاسم: ${name}%0A🏠 العنوان: ${address}%0A🛒 المنتجات:%0A`;
 
     cart.forEach(item => {
-      message += `- ${item.name} (${item.price} ₪)%0A`;
+      message += `- ${item.name} (${item.price} ₪) - الكمية: ${item.quantity}%0A`;
     });
 
     message += `%0A💵 الدفع: عند الاستلام`;
@@ -214,6 +276,10 @@
     updateCart();
 
     window.open(`https://wa.me/972569480816?text=${message}`, '_blank');
+  }
+
+  function scrollToCart() {
+    document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
   }
 
   updateCart();
